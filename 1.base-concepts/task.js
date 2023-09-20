@@ -24,5 +24,6 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) { //
   let monthsPercent = newPercent / 12; //  в диапазон от 0 до 1 и из годовой ставки — в месячную.
   let bodyCredit = amount - contribution; //Высчитываем тело кредита 
   let onlyPayment = bodyCredit * (monthsPercent + (monthsPercent / ((Math.pow((1 + monthsPercent), countMonths)) - 1))); // расчёт по формуле                                      
-  let totalPayment = Math.round(totalPayment * 100.0) / 100.0; //Считаем общую сумму, которую придётся заплатить клиенту. Округляем результат до двух значений после запятой. Возвращаем результат из функции. 
+  let totalPayment = onlyPayment * countMonths; //Считаем общую сумму, которую придётся заплатить клиенту.
+  return Math.round(totalPayment * 100.0) / 100.0; //Округляем результат до двух значений после запятой. Возвращаем результат из функции. 
 }
